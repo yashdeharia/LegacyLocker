@@ -1,0 +1,29 @@
+<!-- <p>register works!</p>
+<div class="container">
+    <h2>Register</h2>
+    <form (submit)="register()">
+  <input type="text" class="form-control" placeholder="Name" [(ngModel)]="user.name" name="name" required>
+  <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" name="email" required>
+      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+      <button type="submit" class="btn btn-primary mt-2">Register</button>
+    </form>
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div> -->
+
+  
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name:</label>
+      <input type="text" formControlName="name" required />
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" formControlName="email" required />
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" formControlName="password" required />
+    </div>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+

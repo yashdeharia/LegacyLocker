@@ -1,0 +1,77 @@
+<!-- <p>dashboard works!</p>
+<div class="container">
+    <h2>Welcome to Dashboard</h2>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div> -->
+
+<div class="dashboard-container">
+
+  <!-- No need as there is nav bar -->
+  <!-- <h2>Welcome to Dashboard</h2>
+
+ 
+  <button (click)="logout()">Logout</button> --> 
+
+  <hr>
+
+
+  <!-- <h3>Add Digital Assets</h3> -->
+
+  <!-- Add / Update Asset Form -->
+  <!-- <input [(ngModel)]="newAsset.name" placeholder="Asset Name">
+  <input [(ngModel)]="newAsset.description" placeholder="Description">
+  <input [(ngModel)]="newAsset.type" placeholder="Type">
+  <button (click)="addDigitalAsset()">Add Asset</button> -->
+
+  <!-- new css add asset commit -->
+
+  <div class="add-asset-container">
+    <h3>Add Digital Assets</h3>
+  
+    <!-- Add / Update Asset Form -->
+    <input class="form-input" [(ngModel)]="newAsset.name" type="text" placeholder="Asset Name">
+    <input class="form-input" [(ngModel)]="newAsset.description" type="text" placeholder="Description">
+    <input class="form-input" [(ngModel)]="newAsset.type" type="text" placeholder="Type">
+    <button class="add-asset-btn" (click)="addDigitalAsset()">Add Asset</button>
+  </div>
+  
+
+  <hr />
+
+  <!-- Asset List -->
+  <!-- <div *ngIf="digitalAssets.length > 0; else noAssets">
+    <h3>Your Digital Assets</h3>
+    <ul>
+      <li *ngFor="let asset of digitalAssets">
+        <strong>{{ asset.name }}</strong> ({{ asset.type }})
+        <p>{{ asset.description }}</p>
+        
+        <button (click)="deleteDigitalAsset(asset.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noAssets>
+    <p>No digital assets found.</p>
+  </ng-template> -->
+
+  <!-- Asset List -->
+<div *ngIf="digitalAssets.length > 0; else noAssets">
+  <h3>Your Digital Assets</h3>
+  <div class="asset-grid">
+    <div class="asset-card" *ngFor="let asset of digitalAssets">
+      <div class="card-content">
+        <strong>{{ asset.name }}</strong>
+        <span class="asset-type">{{ asset.type }}</span>
+        <p>{{ asset.description }}</p>
+      </div>
+      <button class="delete-btn" (click)="deleteDigitalAsset(asset.id)">Delete</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noAssets>
+  <p>No digital assets found.</p>
+</ng-template>
+
+</div>
