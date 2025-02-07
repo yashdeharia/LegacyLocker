@@ -70,4 +70,13 @@ export class DigitalAssetService {
   deleteAsset(assetId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${assetId}`, { headers: this.getAuthHeaders() });
   }
+
+  // UpdateDigitalAsset
+
+  updateAsset(assetId: number, asset: any):
+    Observable<any> {
+      return this.http.put<void>(`${this.apiUrl}/${assetId}`, asset, { headers: this.getAuthHeaders() });
+    }
+
+
 }

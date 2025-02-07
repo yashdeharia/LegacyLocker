@@ -23,8 +23,9 @@
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form> -->
 
-  <div class="wrapper">
-    <h2>Login</h2>
+
+  <div class="w-96 rounded-lg bg-black p-8 text-center border border-white border-opacity-50 backdrop-blur-sm border-4 border-cyan-400">
+    <h2 class="">Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="input-field">
             <input type="email" id="email" formControlName="email" required>
@@ -47,3 +48,4 @@
         </div>
     </form>
 </div>
+

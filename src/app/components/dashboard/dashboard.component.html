@@ -34,9 +34,71 @@
     <input class="form-input" [(ngModel)]="newAsset.type" type="text" placeholder="Type">
     <button class="add-asset-btn" (click)="addDigitalAsset()">Add Asset</button>
   </div>
+
+  <h3>Digital Assets</h3>
+<ul>
+  <li *ngFor="let asset of digitalAssets">
+    <strong>{{ asset.name }}</strong> - {{ asset.type }} 
+    <button (click)="startEdit(asset)">Edit</button>
+    <button (click)="deleteDigitalAsset(asset.id)">Delete</button>
+
+    <!-- Display Beneficiary -->
+     <div *ngIf="asset.beneficiaries.length > 0">
+
+      <h4>Beneficiary:</h4>
+      <ul>
+        <li *ngFor="let beneficiary of asset.beneficiaries">
+
+
+          {{beneficiary.name}}
+          ({{beneficiary.relationship}})
+
+          <!-- <button (click) = "deleteBeneficiary(beneficiary.id, asset.id)">Remove</button> -->
+
+        </li>
+      </ul>
+
+     </div>
+  </li>
+</ul>
+
+<!-- Add Asset Form -->
+<!-- <h3>Add New Digital Asset</h3>
+<input type="text" [(ngModel)]="newAsset.name" placeholder="Name" />
+<input type="text" [(ngModel)]="newAsset.type" placeholder="Type" />
+<textarea [(ngModel)]="newAsset.description" placeholder="Description"></textarea>
+<button (click)="addDigitalAsset()">Add</button> -->
+
+<!-- Edit Form -->
+<div *ngIf="editingAsset">
+  <h3>Edit Digital Asset</h3>
+  <input type="text" [(ngModel)]="editingAsset.name" placeholder="Name" />
+  <input type="text" [(ngModel)]="editingAsset.type" placeholder="Type" />
+  <textarea [(ngModel)]="editingAsset.description" placeholder="Description"></textarea>
+  <button (click)="updateAsset()">Update</button>
+  <button (click)="cancelEdit()">Cancel</button>
+</div>
   
 
   <hr />
+
+  <!-- //add Beneficiary -->
+
+  <h2>Assign Beneficiary</h2>
+  <form (submit)="assignBeneficiary()">
+    <label for="asset">Select Digital Asset:</label>
+    <select id="asset" [(ngModel)]="newBeneficiary.assetId" name="assetId" required>
+      <option *ngFor="let asset of digitalAssets" [value]="asset.id">{{ asset.name }}</option>
+    </select>
+  
+    <label for="name">Beneficiary Name:</label>
+    <input type="text" id="name" [(ngModel)]="newBeneficiary.name" name="name" required>
+  
+    <label for="relationship">Relationship:</label>
+    <input type="text" id="relationship" [(ngModel)]="newBeneficiary.relationship" name="relationship" required>
+  
+    <button type="submit">Assign Beneficiary</button>
+  </form>
 
   <!-- Asset List -->
   <!-- <div *ngIf="digitalAssets.length > 0; else noAssets">
@@ -63,7 +125,17 @@
       <div class="card-content">
         <strong>{{ asset.name }}</strong>
         <span class="asset-type">{{ asset.type }}</span>
+        <h6>Beneficiary</h6>
         <p>{{ asset.description }}</p>
+        <li *ngFor="let beneficiary of asset.beneficiaries">
+
+
+          {{beneficiary.name}}
+          ({{beneficiary.relationship}})
+
+          <!-- <button (click) = "deleteBeneficiary(beneficiary.id, asset.id)">Remove</button> -->
+
+        </li>
       </div>
       <button class="delete-btn" (click)="deleteDigitalAsset(asset.id)">Delete</button>
     </div>
