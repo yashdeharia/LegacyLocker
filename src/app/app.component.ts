@@ -18,4 +18,10 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

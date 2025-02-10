@@ -1,29 +1,36 @@
-<!-- <p>register works!</p>
-<div class="container">
-    <h2>Register</h2>
-    <form (submit)="register()">
-  <input type="text" class="form-control" placeholder="Name" [(ngModel)]="user.name" name="name" required>
-  <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" name="email" required>
-      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-      <button type="submit" class="btn btn-primary mt-2">Register</button>
-    </form>
-    <p *ngIf="errorMessage">{{ errorMessage }}</p>
-  </div> -->
 
-  
+
+  <div class="w-screen h-screen font-mono text-2xl bg-black text-white p-8 text-center border-opacity-50 backdrop-blur-sm">
+    <div class="border border-cyan-400 justify-center inline-block rounded hover:shadow-[0_0_100px_#5C6BC0,inset_0_0_5px_#5C6BC0,0_0_50px_#26C6DA,0_0_250px_#26C6DA,0_0_200px_#26C6DA] delay-100 duration-1000">
+      <h2 class="">Register</h2>
+    <hr>
+    <br>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div>
       <label>Name:</label>
-      <input type="text" formControlName="name" required />
+      <br>
+      <input class="text-black" type="text" formControlName="name" required />
     </div>
     <div>
       <label>Email:</label>
-      <input type="email" formControlName="email" required />
+      <br>
+      <input class="text-black" type="email" formControlName="email" required />
     </div>
     <div>
       <label>Password:</label>
-      <input type="password" formControlName="password" required />
+      <br>
+      <input class="text-black" type="password" formControlName="password" required />
     </div>
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <br>
+    <button class="border border-white" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <br>
+    <br>
+    <hr>
+    <div class="register">
+      <p class="text-sm">You have account 😯? <a href="/login">Then Login</a></p>
+  </div>
+
   </form>
+  </div>
+  </div>
 

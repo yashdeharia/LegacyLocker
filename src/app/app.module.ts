@@ -9,6 +9,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+
+// import {provideFirebaseApp, initializeApp} from '@angular/fire/app';
+// import {provideStorage, getStorage} from '@angular/fire/storage';
+// import {environment} from '../environments/environment'
  
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -38,6 +38,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage } from 'src/firebase.config';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +78,6 @@ export class DigitalAssetService {
   updateAsset(assetId: number, asset: any):
     Observable<any> {
       return this.http.put<void>(`${this.apiUrl}/${assetId}`, asset, { headers: this.getAuthHeaders() });
-    }
-
+  }
 
 }

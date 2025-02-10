@@ -24,28 +24,41 @@
   </form> -->
 
 
-  <div class="w-96 rounded-lg bg-black p-8 text-center border border-white border-opacity-50 backdrop-blur-sm border-4 border-cyan-400">
+  <div class="w-screen h-screen font-mono text-2xl bg-black text-white p-8 text-center border-opacity-50 backdrop-blur-sm">
+    <div class="border rounded border-cyan-400 justify-center inline-block hover:shadow-[0_0_100px_#5C6BC0,inset_0_0_5px_#5C6BC0,0_0_50px_#26C6DA,0_0_250px_#26C6DA,0_0_200px_#26C6DA] delay-100 duration-1000">
     <h2 class="">Login</h2>
+    <hr>
+    <br>
+    
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="input-field">
-            <input type="email" id="email" formControlName="email" required>
-            <label for="email">Email</label>
+          <label for="email">Email</label>
+          <br>
+            <input class="text-black" type="email" id="email" formControlName="email" required>
+            
         </div>
         <div class="input-field">
-            <input type="password" id="password" formControlName="password" required>
-            <label for="password">Password</label>
+          <label for="password">Password</label>
+          <br>
+            <input class="text-black" type="password" id="password" formControlName="password" required>
+            
         </div>
         <div class="forget">
             <label for="remember">
+                <p class="text-sm">Remember Me</p>
                 <input type="checkbox" id="remember">
-                <p>Remember Me</p>
+                
             </label>
-            <a href="#">Forgot Password?</a>
+            
         </div>
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button class="border border-white" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <br>
+        <hr>
         <div class="register">
-            <p>Don't have an account? <a href="#">Register here</a></p>
+            <p class="text-sm">Don't have an account 😑? <a href="/register">Register here</a></p>
         </div>
     </form>
+  </div>
 </div>
+
 

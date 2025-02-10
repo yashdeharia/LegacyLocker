@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .glass-card {
+    @apply border border-cyan-400 bg-opacity-10 backdrop-blur-lg shadow-lg rounded-lg p-6 transition-all duration-300;
+  }
+
+  .input-field {
+    @apply w-full p-3 bg-gray-900 text-white border border-gray-700 rounded-md focus:ring-2 focus:ring-cyan-400 outline-none;
+  }
+
+  .neon-btn {
+    @apply w-full p-3 text-white rounded-md bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-700 hover:to-indigo-700 shadow-lg transition-all duration-300;
+  }
+
+  .neon-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-600 animate-pulse;
+  }
+  
+}
+
+@keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 2s linear infinite;
+  
+}
+
+@keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+/* @keyframes rocket-launch {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-50px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+  }
+  
+  .rocket-launch {
+    display: inline-block;
+    animation: rocket-launch 1s ease-out forwards;
+  }
+   */

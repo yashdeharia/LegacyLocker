@@ -1,149 +1,196 @@
-<!-- <p>dashboard works!</p>
-<div class="container">
-    <h2>Welcome to Dashboard</h2>
-    <button class="btn btn-danger" (click)="logout()">Logout</button>
-  </div> -->
-
-<div class="dashboard-container">
-
-  <!-- No need as there is nav bar -->
-  <!-- <h2>Welcome to Dashboard</h2>
-
- 
-  <button (click)="logout()">Logout</button> --> 
-
-  <hr>
-
-
-  <!-- <h3>Add Digital Assets</h3> -->
-
-  <!-- Add / Update Asset Form -->
-  <!-- <input [(ngModel)]="newAsset.name" placeholder="Asset Name">
-  <input [(ngModel)]="newAsset.description" placeholder="Description">
-  <input [(ngModel)]="newAsset.type" placeholder="Type">
-  <button (click)="addDigitalAsset()">Add Asset</button> -->
-
-  <!-- new css add asset commit -->
-
-  <div class="add-asset-container">
-    <h3>Add Digital Assets</h3>
+<div class="w-screen min-h-screen font-mono bg-black text-white p-8 flex flex-col items-center">
   
-    <!-- Add / Update Asset Form -->
-    <input class="form-input" [(ngModel)]="newAsset.name" type="text" placeholder="Asset Name">
-    <input class="form-input" [(ngModel)]="newAsset.description" type="text" placeholder="Description">
-    <input class="form-input" [(ngModel)]="newAsset.type" type="text" placeholder="Type">
-    <button class="add-asset-btn" (click)="addDigitalAsset()">Add Asset</button>
+  <h2 class="text-4xl font-bold mb-8 text-center neon-text">Dashboard</h2>
+
+  <!-- Navigation -->
+  <!-- <nav class="flex justify-around bg-gray-800 text-white p-4 mb-8">
+    <button (click)="toggleSection('assetList')" class="hover:text-cyan-400">Assets</button>
+    <button (click)="toggleSection('addAsset')" class="hover:text-cyan-400">Add Asset</button>
+    <button (click)="toggleSection('assignBeneficiary')" class="hover:text-cyan-400">Assign Beneficiary</button>
+  </nav> -->
+  <p class="material-icons" class="h-10 w-10 mr-3 animate-spin-slow">✈️</p>
+
+  <nav class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-4 mb-8 shadow-lg">
+    
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <!-- <img src="assets/logo.svg" alt="Logo" class="h-10 w-10 mr-3 animate-spin-slow"> -->
+        
+        <span class="text-2xl font-extrabold tracking-wide"></span>
+      </div>
+  
+      <!-- Navigtin Lnks -->
+      <div class="hidden md:flex space-x-8">
+        <button
+          (click)="toggleSection('assetList')"
+          [ngClass]="{'border-b-2 border-white': showAssetList}"
+          class="flex items-center space-x-2 hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">inventory_2</span>
+          <span>Assets</span>
+        </button>
+        <button
+          (click)="toggleSection('addAsset')"
+          [ngClass]="{'border-b-2 border-white': showAddAsset}"
+          class="flex items-center space-x-2 hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">add_circle_outline</span>
+          <span>Add Asset</span>
+        </button>
+        <button
+          (click)="toggleSection('assignBeneficiary')"
+          [ngClass]="{'border-b-2 border-white': showAssignBeneficiary}"
+          class="flex items-center space-x-2 hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">person_add_alt</span>
+          <span>Assign Beneficiary</span>
+        </button>
+      </div>
+  
+      <!--  Menu Bton -->
+      <div class="md:hidden">
+        <button (click)="toggleMobileMenu()" class="focus:outline-none">
+          <span class="material-icons text-3xl">menu</span>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Menu -->
+    <div *ngIf="isMobileMenuOpen" class="md:hidden bg-indigo-700">
+      <div class="flex flex-col items-center space-y-4 py-4">
+        <button
+          (click)="toggleSection('assetList'); toggleMobileMenu()"
+          class="flex items-center space-x-2 text-white hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">inventory_2</span>
+          <span>Assets</span>
+        </button>
+        <button
+          (click)="toggleSection('addAsset'); toggleMobileMenu()"
+          class="flex items-center space-x-2 text-white hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">add_circle_outline</span>
+          <span>Add Asset</span>
+        </button>
+        <button
+          (click)="toggleSection('assignBeneficiary'); toggleMobileMenu()"
+          class="flex items-center space-x-2 text-white hover:text-yellow-300 transition duration-300"
+        >
+          <span class="material-icons">person_add_alt</span>
+          <span>Assign Beneficiary</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+
+  <!-- Add Dgtl Assts -->
+  <div *ngIf="showAddAsset" class="glass-card w-full md:w-2/3 lg:w-1/2 p-6 mb-8">
+    <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Add Digital Asset</h3>
+    
+    <div class="space-y-4">
+      <input class="input-field" [(ngModel)]="newAsset.name" type="text" placeholder="Asset Name">
+      <input class="input-field" [(ngModel)]="newAsset.description" type="text" placeholder="Description">
+      <input class="input-field" [(ngModel)]="newAsset.type" type="text" placeholder="Type">
+      <input type="file" (change)="onFileSelected($event)">
+      <button class="neon-btn" (click)="addDigitalAsset()">Add Asset</button>
+    </div>
   </div>
 
-  <h3>Digital Assets</h3>
-<ul>
-  <li *ngFor="let asset of digitalAssets">
-    <strong>{{ asset.name }}</strong> - {{ asset.type }} 
-    <button (click)="startEdit(asset)">Edit</button>
-    <button (click)="deleteDigitalAsset(asset.id)">Delete</button>
+  <!-- Edit Dgtl Assts
+  <div *ngIf="editingAsset" class="glass-card w-full md:w-2/3 lg:w-1/2 p-6 mb-8 border-yellow-400">
+    <h3 class="text-2xl font-semibold text-yellow-400 mb-4">Edit Digital Asset</h3>
+    <input class="input-field" type="text" [(ngModel)]="editingAsset.name" placeholder="Name" />
+    <input class="input-field" type="text" [(ngModel)]="editingAsset.type" placeholder="Type" />
+    <textarea class="input-field" [(ngModel)]="editingAsset.description" placeholder="Description"></textarea>
+    <div class="flex gap-4 mt-4">
+      <button class="neon-btn bg-green-500 hover:bg-green-700" (click)="updateAsset()">Update</button>
+      <button class="neon-btn bg-red-500 hover:bg-red-700" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div> -->
 
-    <!-- Display Beneficiary -->
-     <div *ngIf="asset.beneficiaries.length > 0">
+  <!-- Assign Bnfcry -->
+  <div *ngIf="showAssignBeneficiary" class="glass-card w-full md:w-2/3 lg:w-1/2 p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-indigo-400">Assign Beneficiary</h2>
+    
+    <form (submit)="assignBeneficiary()" class="space-y-4">
+      <select class="input-field" id="asset" [(ngModel)]="newBeneficiary.assetId" name="assetId" required>
+        <option *ngFor="let asset of digitalAssets" [value]="asset.id">{{ asset.name }}</option>
+      </select>
 
-      <h4>Beneficiary:</h4>
-      <ul>
-        <li *ngFor="let beneficiary of asset.beneficiaries">
+      <input class="input-field" type="text" id="name" [(ngModel)]="newBeneficiary.name" name="name" placeholder="Beneficiary Name" required>
+      
+      <input class="input-field" type="text" id="relationship" [(ngModel)]="newBeneficiary.relationship" name="relationship" placeholder="Relationship" required>
 
-
-          {{beneficiary.name}}
-          ({{beneficiary.relationship}})
-
-          <!-- <button (click) = "deleteBeneficiary(beneficiary.id, asset.id)">Remove</button> -->
-
-        </li>
-      </ul>
-
-     </div>
-  </li>
-</ul>
-
-<!-- Add Asset Form -->
-<!-- <h3>Add New Digital Asset</h3>
-<input type="text" [(ngModel)]="newAsset.name" placeholder="Name" />
-<input type="text" [(ngModel)]="newAsset.type" placeholder="Type" />
-<textarea [(ngModel)]="newAsset.description" placeholder="Description"></textarea>
-<button (click)="addDigitalAsset()">Add</button> -->
-
-<!-- Edit Form -->
-<div *ngIf="editingAsset">
-  <h3>Edit Digital Asset</h3>
-  <input type="text" [(ngModel)]="editingAsset.name" placeholder="Name" />
-  <input type="text" [(ngModel)]="editingAsset.type" placeholder="Type" />
-  <textarea [(ngModel)]="editingAsset.description" placeholder="Description"></textarea>
-  <button (click)="updateAsset()">Update</button>
-  <button (click)="cancelEdit()">Cancel</button>
-</div>
-  
-
-  <hr />
-
-  <!-- //add Beneficiary -->
-
-  <h2>Assign Beneficiary</h2>
-  <form (submit)="assignBeneficiary()">
-    <label for="asset">Select Digital Asset:</label>
-    <select id="asset" [(ngModel)]="newBeneficiary.assetId" name="assetId" required>
-      <option *ngFor="let asset of digitalAssets" [value]="asset.id">{{ asset.name }}</option>
-    </select>
-  
-    <label for="name">Beneficiary Name:</label>
-    <input type="text" id="name" [(ngModel)]="newBeneficiary.name" name="name" required>
-  
-    <label for="relationship">Relationship:</label>
-    <input type="text" id="relationship" [(ngModel)]="newBeneficiary.relationship" name="relationship" required>
-  
-    <button type="submit">Assign Beneficiary</button>
-  </form>
+      <button class="neon-btn bg-blue-500 hover:bg-blue-700" type="submit">Assign Beneficiary</button>
+    </form>
+  </div>
 
   <!-- Asset List -->
-  <!-- <div *ngIf="digitalAssets.length > 0; else noAssets">
-    <h3>Your Digital Assets</h3>
-    <ul>
-      <li *ngFor="let asset of digitalAssets">
-        <strong>{{ asset.name }}</strong> ({{ asset.type }})
-        <p>{{ asset.description }}</p>
+  <div *ngIf="showAssetList" class="w-full">
+    <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Your Digital Assets</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass-card p-4" *ngFor="let asset of digitalAssets">
+        <div class="mb-4">
+          <h4 class="text-xl font-semibold">{{ asset.name }}</h4>
+          <span class="text-sm text-gray-300">{{ asset.type }}</span>
+          <!-- <p class="mt-2 text-sm text-gray-400">{{ asset.description }}</p> -->
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <p *ngIf="asset.description">
+           
+            <img *ngIf="!isImage(asset.description)" [src]="asset.description" alt="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdownload-pdf&psig=AOvVaw2lYz_3BgoJMroZA-oCKrNs&ust=1739273254550000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjyg_T_uIsDFQAAAAAdAAAAABAE" width="300">
+            
+            
+            <a *ngIf="!isPdf(asset.description)" [href]="asset.description" target="_blank">View Document</a>
+          </p> -->
+
+          <p *ngIf="asset.description">
+            <!-- If it's an image, show the image -->
+            <img  *ngIf="!isImage(asset.description)" [src]="asset.description"  width="300">
         
-        <button (click)="deleteDigitalAsset(asset.id)">Delete</button>
-      </li>
-    </ul>
+            <!-- If it's a PDF, show the link -->
+            <a *ngIf="!isPdf(asset.description)" [href]="asset.description" target="_blank">View Document</a>
+        </p>
+        
+
+
+
+
+
+
+
+
+
+        </div>
+        
+        <h6 class="text-sm font-semibold">Beneficiary:</h6>
+        <ul class="list-disc pl-4 text-sm">
+          <li *ngFor="let beneficiary of asset.beneficiaries">
+            {{ beneficiary.name }} ({{ beneficiary.relationship }})
+          </li>
+        </ul>
+
+        <button class="neon-btn bg-red-500 hover:bg-red-700 mt-4" (click)="deleteDigitalAsset(asset.id)">Delete</button>
+      </div>
+    </div>
   </div>
 
   <ng-template #noAssets>
-    <p>No digital assets found.</p>
-  </ng-template> -->
-
-  <!-- Asset List -->
-<div *ngIf="digitalAssets.length > 0; else noAssets">
-  <h3>Your Digital Assets</h3>
-  <div class="asset-grid">
-    <div class="asset-card" *ngFor="let asset of digitalAssets">
-      <div class="card-content">
-        <strong>{{ asset.name }}</strong>
-        <span class="asset-type">{{ asset.type }}</span>
-        <h6>Beneficiary</h6>
-        <p>{{ asset.description }}</p>
-        <li *ngFor="let beneficiary of asset.beneficiaries">
-
-
-          {{beneficiary.name}}
-          ({{beneficiary.relationship}})
-
-          <!-- <button (click) = "deleteBeneficiary(beneficiary.id, asset.id)">Remove</button> -->
-
-        </li>
-      </div>
-      <button class="delete-btn" (click)="deleteDigitalAsset(asset.id)">Delete</button>
-    </div>
-  </div>
-</div>
-
-<ng-template #noAssets>
-  <p>No digital assets found.</p>
-</ng-template>
+    <p class="text-center text-gray-400">No digital assets found.</p>
+  </ng-template>
 
 </div>

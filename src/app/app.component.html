@@ -52,25 +52,33 @@
 
 </body>  -->
 
-<nav class="bg-black font-mono text-white border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
-  <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <a class="text-xl font-semibold text-white dark:text-white" href="/">LegacyLocker</a>
-      <div class="w-full md:block md:w-auto">
-          <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-              <li>
-                  <a class="block py-2 pr-4 pl-3 text-cyan-400 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/register" *ngIf="!isLoggedIn()">Register</a>
-              </li>
-              <li>
-                  <a class="block py-2 pr-4 pl-3 text-indigo-400 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
-              </li>
-              <li>
-                  <a class="block py-2 pr-4 pl-3 text-gray-700 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/dashboard" *ngIf="isLoggedIn()">Dashboard</a>
-              </li>
-              <li>
-                  <button class="block py-2 pr-4 pl-3 text-gray-700 rounded md:bg-transparent md:p-0 dark:text-white bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
-              </li>
-          </ul>
-      </div>
+<nav class="bg-black font-mono text-white border-gray-200 px-2 sm:px-4 py-2.5">
+  <div class="container flex flex-wrap justify-between items-center mx-auto ">
+    <a class="text-2xl font-semibold text-white dark:text-white" routerLink="/">Le<span class="bg-gradient-to-r from-cyan-300 to-indigo-600 inline-block text-transparent bg-clip-text">gacy</span>Locker</a>
+    <button class="md:hidden text-white focus:outline-none" (click)="toggleMenu()">
+      <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <div class="w-full md:block md:w-auto" [ngClass]="{ 'hidden': !isMenuOpen }" id="menu">
+      <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+        <li>
+          <a class="block py-2 pr-4 pl-3 text-cyan-400 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/register" *ngIf="!isLoggedIn()">Register</a>
+        </li>
+        <li>
+          <a class="block py-2 pr-4 pl-3 text-indigo-400 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
+        </li>
+        <li>
+          <a class="block py-2 pr-4 pl-3 text-gray-700 rounded md:bg-transparent md:p-0 dark:text-white" routerLink="/dashboard" *ngIf="isLoggedIn()">Dashboard</a>
+        </li>
+        <li>
+          <button class="block py-2 pr-4 pl-3 text-gray-700 rounded md:bg-transparent md:p-0 dark:text-white bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+<hr class="border-t border-cyan-400 ">
 <router-outlet></router-outlet>
+
+
