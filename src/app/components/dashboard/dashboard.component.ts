@@ -199,7 +199,7 @@ export class DashboardComponent implements OnInit {
       userId: 1 // Change this as needed
     };
 
-    this.http.post('http://localhost:5000/api/digitalasset', assetData).subscribe(
+    this.http.post('http://localhost:7184/api/digitalasset', assetData).subscribe(
       (response) => {
         console.log('File URL saved to backend:', response);
       },

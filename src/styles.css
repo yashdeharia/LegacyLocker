@@ -40,7 +40,26 @@
       transform: scale(2);
       opacity: 0;
     }
-  }
+}
+
+.glow-text {
+  color: white;
+  text-shadow:
+    0 0 100px #5C6BC0,
+    
+    0 0 10px #5C6BC0,
+    0 0 50px #26C6DA,
+    0 0 25px #26C6DA,
+    0 0 250px #26C6DA,
+    0 0 200px #26C6DA;
+
+    /* 0_0_100px_#5C6BC0,
+    inset_0_0_5px_#5C6BC0,
+    0_0_50px_#26C6DA,
+    0_0_250px_#26C6DA,
+    0_0_200px_#26C6DA; */
+}
+
 
 /* @keyframes rocket-launch {
     0% {

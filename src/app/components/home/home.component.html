@@ -1,20 +1,114 @@
-<body class="font-mono  h-screen bg-black mx-100px text-white">
- 
-  <div >
-    <div class="">
-      <div class="absolute inset-0 flex items-center justify-center ">
-      <div>
-        <h1 class="text-4xl font-bold mb-4">Welcome. <br> to Le<span class="bg-gradient-to-r from-cyan-300 to-indigo-600 inline-block text-transparent bg-clip-text hover:text-8xl delay-200 duration-300" routerLink="/login">gacy</span>Locker</h1>
-      <p class="text-lg">A Place where your Legacy is Stored.</p>
-      <p>in just 3 steps.. hehe <span class="text-2xl"></span></p>
-      <p class="text-sm">first click on <span class="bg-gradient-to-r from-cyan-300 to-indigo-600 inline-block text-transparent bg-clip-text">gacy</span>*</p>
-      
-      <p><span class="text-2xl">😉-></span><span class="text-4xl">😁-></span><span class="text-6xl">😆-></span><span class="text-8xl">😂-></span><span class="text-9xl">🤣</span></p>
-      </div>
-      </div>
-    </div>
-    </div>
 
-   
-  </body>
+<body class="font-mono h-screen bg-black text-white">
+
+  <!-- Main Container -->
+  <div class="mx-auto max-w-7xl bg-white text-black  ">
+    
+    <!-- Header Section -->
+
+    <!-- Hero Section -->
+    <main class="flex flex-col items-center justify-center min-h-screen">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold mb-4">
+          <span class="text-6xl glow-text">Welcome</span>. <br>
+          to Le<span
+            class="bg-gradient-to-r from-cyan-300 to-indigo-600 inline-block text-transparent bg-clip-text hover:text-9xl transition-all duration-300"
+          >gacy</span>Locker
+        </h1>
+        <p class="text-xl mb-4">A Place where your Legacy is Stored.</p>
+        <p class="mb-1">In just 3 steps... hehe <br><span class="text-2xl">😉</span></p>
+        <p>A project by Yash Deharia</p>
+        <p class="text-sm mb-8">
+          First, click on <span class="bg-gradient-to-r from-cyan-300 to-indigo-600 inline-block text-transparent bg-clip-text">gacy</span>*
+        </p>
+        
+
+        <!-- Call to Action Button -->
+        <a routerLink="/register" class="text-black border border-cyan-400 hover:hover:shadow-[0_0_100px_#5C6BC0,inset_0_0_5px_#5C6BC0,0_0_50px_#26C6DA,0_0_250px_#26C6DA,0_0_200px_#26C6DA] delay-100 duration-1000 font-bold py-3 px-6 rounded-full transition duration-300">
+          Get Started
+        </a>
+      </div>
+    </main>
+
   
+
+    <!-- About Section -->
+     <div class="bg-black">
+    <section id="about" class="py-6 text-white">
+      <h2 class="text-4xl font-bold text-center mb-8">About LegacyLocker</h2>
+      <p class="max-w-3xl mx-auto text-center text-lg">
+        LegacyLocker is a secure digital vault designed to store and preserve your most treasured memories and important documents. We ensure that your legacy is passed down to future generations securely and effortlessly.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+      <h2 class="text-5xl font-bold text-center mb-12 ">Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Feature 1 -->
+        <div class="border border-black p-6 flex-col items-center text-center">
+          <p class="text-6xl">🔐</p>  
+                    <h3 class="text-2xl font-semibold mb-2">Enhanced Security</h3>
+          <p>We use state-of-the-art encryption to keep your data safe and secure.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="border border-black p-6 flex-col items-center text-center">
+          <p class="text-6xl">😃</p>          
+            <h3 class="text-2xl font-semibold mb-2">User-Friendly Interface</h3>
+          <p>An intuitive platform that's easy to navigate for users of all ages.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="border border-black p-6 flex flex-col items-center text-center">
+          <p class="text-6xl">👩‍🔧</p>        
+              <h3 class="text-2xl font-semibold mb-2">24/7 Accessibility</h3>
+          <p>Access your legacy anytime, anywhere, on any device.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="border border-black p-6 flex flex-col items-center text-center">
+          <p class="text-6xl">💁‍♂️</p>          
+            <h3 class="text-2xl font-semibold mb-2">Dedicated Support</h3>
+          <p>Our support team is here to help you every step of the way.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-cyan-400">
+      <h2 class="text-4xl text-black font-bold text-center mb-8">Get in Touch</h2>
+      <p class="text-center text-black mb-12">Have questions or need assistance? We're here to help!</p>
+      <form class="max-w-xl mx-auto bg-black" action="https://getform.io/f/axowjldb" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block text-lg mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded bg-gray-800 text-white" placeholder="Your Name">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-lg mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded bg-gray-800 text-white" placeholder="Your Email">
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-lg mb-2">Message</label>
+          <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded bg-gray-800 text-white" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="bg-black hover:bg-indigo-700 text-white font-bold py-3 px-6  transition duration-300">
+          Send Message
+        </button>
+      </form>
+      
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-white border-t border-gray-700">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm">&copy; 2025 LegacyLocker. Project By - Yash Deharia</p>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="mx-2 hover:text-indigo-400">Thank You</a>
+          <a href="#" class="mx-2 hover:text-indigo-400">for viewing</a>
+          <a href="#" class="mx-2 hover:text-indigo-400">my project</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
