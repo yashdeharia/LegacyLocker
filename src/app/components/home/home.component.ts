@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  name: string = '';
+  doc: string = '';
+  // num: number | null = null;
+
+  submitForm(){
+    alert("Name: " + this.name + "documet: " + this.doc );
+  }
+
+
+  
 }

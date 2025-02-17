@@ -27,8 +27,25 @@
         <a routerLink="/register" class="text-black border border-cyan-400 hover:hover:shadow-[0_0_100px_#5C6BC0,inset_0_0_5px_#5C6BC0,0_0_50px_#26C6DA,0_0_250px_#26C6DA,0_0_200px_#26C6DA] delay-100 duration-1000 font-bold py-3 px-6 rounded-full transition duration-300">
           Get Started
         </a>
+        
       </div>
     </main>
+
+    <div>
+      <form (ngSubmit) = "submitForm()">
+
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)] = "name" name="name" id="name" required/>
+
+        <label for="doc">Doc:</label>
+        <input type="text" [(ngModel)] = "doc" name="doc" id="doc" required/>
+
+        <!-- <label for="name">Name:</label>
+        <input type="text" [(ngModel)] = "name" name="name" id="name" required/> -->
+
+      <button type="submit">click me</button>
+      </form>
+    </div>
 
   
 
